@@ -2,7 +2,7 @@
 CFLAGS = -g -Wall -DFUSE_USE_VERSION=26 `pkg-config fuse --cflags`
 LINKFLAGS = -Wall `pkg-config fuse --libs`
 
-all: bin/sfs
+all: bin/fs
 
 clean:
 	rm -rf bin obj
@@ -10,17 +10,17 @@ clean:
 bin: 
 	mkdir -p bin
 
-bin/sfs: bin obj/sfs.o obj/device.o obj/main.o
-	g++ -g -o bin/sfs obj/* $(LINKFLAGS)
+bin/fs: bin obj/fs.o obj/device.o obj/main.o
+	g++ -g -o bin/fs obj/* $(LINKFLAGS)
 
 obj:
 	mkdir -p obj
 
-obj/main.o: obj main.c sfs.h
+obj/main.o: obj main.c fs.h
 	gcc -g $(CFLAGS) -c main.c -o $@
 
-obj/sfs.o: obj sfs.c sfs.h 
-	g++ -g $(CFLAGS) -c sfs.c -o $@
+obj/fs.o: obj fs.c fs.h 
+	g++ -g $(CFLAGS) -c fs.c -o $@
 
 obj/device.o: obj device.c device.h
 	g++ -g $(CFLAGS) -c device.c -o $@
