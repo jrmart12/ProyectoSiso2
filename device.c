@@ -1,5 +1,4 @@
 #include "device.h"
-#include "dir.h"
 static FILE *file;
 
 void device_new_disk(const char *path)
@@ -24,6 +23,9 @@ void device_new_disk(const char *path)
 
     unsigned char dir[4096];
     Dir_Entry dirs;
+    	dirs.name[0] = 'D';
+	dirs.isDir = 0;
+	dirs.index_block = -1;
     for(int x=0;x<ENTBLOQUE;x++){
         memcpy(&dir[x*32],&dirs,sizeof(Dir_Entry));
     }

@@ -5,12 +5,12 @@
 struct fuse_operations sfs_oper;
 
 int main(int argc, char *argv[]) {
-	int fuse_stat;
-
-    sfs_oper.mkdir=fs_mkdir;
-
-    device_new_disk(argv[1]);
-    fuse_stat=fuse_main(argc, argv, &sfs_oper,NULL);
+    printf("mounting file system...\n");
+    device_new_disk("jose");
     device_close();
-    return fuse_stat;
+    return 0;
 }
+//make
+// dd if=map.img of=floppya.img bs=512 count=1 seek=1 conv=notrunc
+//dd if=dir.img of=floppya.img bs=512 count=1 seek=2 conv=notrunc
+//./mount.sh

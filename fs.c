@@ -1,9 +1,4 @@
 #include "fs.h"
-#include <stdio.h>
-#include <cmath>
-#include <string.h>
-#include <stdlib.h>
-#include "device.h"
 Dir_Entry *dir;
 unsigned char Map[TamanoBloque];
 
